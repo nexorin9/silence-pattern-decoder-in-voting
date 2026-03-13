@@ -1,0 +1,69 @@
+{
+  "agent_generation": {
+    "num_agents": [50, 100, 200],
+    "belief_dimensions": [2, 3, 5]
+  },
+  "influence_generation": {
+    "density": [0.1, 0.3, 0.5],
+    "strength_range": [0.1, 0.9]
+  },
+  "voting_rules": ["approval", "plurality", "weighted_voting"],
+  "simulation_params": {
+    "num_rounds": [10, 50, 100],
+    "influence_strength": 0.3,
+    "belief_threshold": 0.5
+  },
+  "experiment_settings": {
+    "consensus": {
+      "num_agents": 100,
+      "num_candidates": 3,
+      "num_rounds": 50,
+      "num_iterations": 100,
+      "consensus_strength_range": [0.5, 0.9]
+    },
+    "minority": {
+      "num_majority": 80,
+      "num_minority": 20,
+      "num_candidates": 3,
+      "num_rounds": 50,
+      "num_iterations": 100,
+      "belief_difference_range": [0.2, 0.6],
+      "minority_confidence_range": [0.4, 0.9]
+    },
+    "oppression": {
+      "num_agents": 100,
+      "num_candidates": 3,
+      "num_rounds": 50,
+      "num_oppresion_levels": 3,
+      "num_iterations_per_level": 50,
+      "oppresion_levels": ["low", "medium", "high"]
+    }
+  },
+  "visualization_settings": {
+    "default_figsize": [12, 8],
+    "save_format": "png",
+    "dpi": 150,
+    "color_palette": {
+      "default": "#2E86AB",
+      "primary": "#C73E1D",
+      "secondary": "#F18F01",
+      "accent": "#6B9AC4"
+    }
+  },
+  "pattern_detection": {
+    "consensus": {
+      "abstention_weight": 0.4,
+      "winner_consistency_weight": 0.4,
+      "belief_score_weight": 0.2
+    },
+    "minority_pressure": {
+      "abstention_increase_weight": 0.5,
+      "variance_weight": 0.5
+    },
+    "oppression": {
+      "abstention_weight": 0.3,
+      "correlation_weight": 0.4,
+      "unpopularity_weight": 0.3
+    }
+  }
+}

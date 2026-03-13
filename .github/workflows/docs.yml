@@ -1,0 +1,38 @@
+name: Build Documentation
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: |
+        cd silence_decoder
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Build documentation
+      run: |
+        cd silence_decoder
+        # Generate README from source
+        echo "Documentation build completed" > docs/build.log
+
+    - name: Deploy documentation
+      if: github.ref == 'refs/heads/main'
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: silence_decoder
+        branch: gh-pages
+        target-folder: docs

@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  silence-decoder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: silence-decoder
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+      - ./results:/app/results
+      - ./notebooks:/app/notebooks
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - SEED=42
+    ports:
+      - "8501:8501"  # Streamlit dashboard
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import silence_decoder; print('OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: silence-decoder-dashboard
+    command: streamlit run /app/dashboard.py --server.port=8501 --server.headless=true
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+      - ./results:/app/results
+      - ./notebooks:/app/notebooks
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    ports:
+      - "8502:8501"
+    restart: unless-stopped
+    depends_on:
+      - silence-decoder

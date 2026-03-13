@@ -1,0 +1,22 @@
+Performance Benchmark Report
+============================================================
+
+Optimal Agent Count: 1000
+Recommendation:  optimum for interactive use: 1000 agents (4.5s runtime, 115.6MB memory)
+
+All Results:
+  50 agents: 1.16s, 1.60MB
+  100 agents: 1.10s, 2.26MB
+  200 agents: 1.24s, 5.23MB
+  500 agents: 1.98s, 29.10MB
+  1000 agents: 4.46s, 115.62MB
+  50 agents: 1.07s, 1.48MB
+  100 agents: 1.08s, 2.26MB
+  200 agents: 1.18s, 5.23MB
+  500 agents: 1.90s, 29.10MB
+  1000 agents: 4.51s, 115.67MB
+  50 agents: 1.08s, 1.48MB
+  100 agents: 1.11s, 2.27MB
+  200 agents: 1.18s, 5.25MB
+  500 agents: 1.87s, 29.17MB
+  1000 agents: 4.45s, 115.73MB
